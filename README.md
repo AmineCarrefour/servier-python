@@ -36,7 +36,7 @@ pip install -r requirements.txt
 ### How to run :
 
 ```
-sudo python3 src/main/DrugsPipeline.py
+python3 src/main/DrugsPipeline.py
 ```
 
 ### Description
@@ -63,14 +63,14 @@ folder.
     └── Configs.py
 ```
 
-##### main/
+#### main/
 
 ```
 1 ) resources/ : Folder that contains the raw data and the desired result. 
 2 ) DrugsPipeline.py : Class that launchesthe data pipeline 
 ```
 
-##### operators/
+#### operators/
 
 ```
 1 ) ingestions_and_normalizations.py : 
@@ -84,12 +84,18 @@ folder.
     2.3 ) Writes the output in JSON format in 'src/main/resources/results/results.json'
 ```
 
+#### utils/
+
+```
+1 ) Configs.py : contains imports and static data
+```
+
 ## Ad-Hoc Query
 
 ### How to run :
 
 ```
-sudo python3 src/main/Usage.py
+python3 src/main/Usage.py
 ```
 
 ### Description
@@ -108,14 +114,14 @@ sudo python3 src/main/Usage.py
     └── Configs.py
 ```
 
-##### main/
+#### main/
 
 ```
 1 ) resources/ : Folder that contains the desired result. 
-3 ) Usage.py : Class that launches the adhoc query on the result of the data pipeline
+2 ) Usage.py : Class that launches the adhoc query on the result of the data pipeline
 ```
 
-##### operators/
+#### operators/
 
 ```
 1 ) adhoc_query.py :
@@ -127,21 +133,32 @@ sudo python3 src/main/Usage.py
 
 ## Axis for improvement
 
-###Using predefined model with dataclasses
+### Using predefined model with dataclasses
+
 In order to strongly type the data entities
 
-###Unitary testing
+### Unitary testing
+
 In order to make the project easily evolve and avoid regressions
 
-###Continuous integration and deployment
-Automates the deployment of the code source (or DAG) 
+### Continuous integration and deployment
 
-###Using columnar compressed files with enforced schema
+Automates the deployment of the code source (or DAG)
+
+### Using columnar compressed files with enforced schema
+
 Using Parquet file is helpful to have data sorted in columns and make the transformations on it faster
 
-###Better sharding for less search time
+### Better sharding for less search time
+
 If data is partitioned physically, it will be easy to reduce search time by selecting only the desired subset of data
 
-###Using a Spark instead of Pandas
+### Using Spark SQL instead of Pandas
+
 It has a richer SQL like API and can be distributed unlike Pandas
+
+# Full SQL Part of the test
+
+Please find the two queries in this path : SQLQueries.sql
+
 
