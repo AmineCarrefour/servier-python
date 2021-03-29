@@ -8,7 +8,8 @@ Configs = Configs()
 ############################################################################################################
 
 def normalize_types(df):
-    df['date'] = pd.to_datetime(df.date).astype('string')
+    df['date'] = pd.to_datetime(df.date)
+    df = df.astype('string')
     return df
 
 

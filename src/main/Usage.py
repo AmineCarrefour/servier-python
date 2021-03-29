@@ -5,10 +5,11 @@ class Usage:
 
     @staticmethod
     def launch():
-        return get_journal_with_max_distinct_mentions()
+        df = read_data_pipeline_output()
+        return get_journal_with_max_distinct_mentions(df)
 
 
 if __name__ == "__main__":
-    agg = Usage()
-    result = agg.launch()
+    use = Usage()
+    result = "The journal who mentions the most of drugs is {}.".format(use.launch())
     print(result)

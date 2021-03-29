@@ -18,26 +18,15 @@ The architecture of the pipeline is composed of four different layers :
 
 ## Setup Dev Environment:
 
-1- Create your own venv (from linux/os terminal) :
+* PyCharm:
 
-```
-python3 -m venv env
-source env/bin/activate
-```
-
-2- Use pip to install dependencies:
-
-```
-pip install -r requirements.txt
-```
+Click on Configure Python Interpreter > Add interpreter > Choose your favorite interpreter (venv in my case)
 
 ## Data pipeline
 
 ### How to run :
 
-```
-python3 src/main/DrugsPipeline.py
-```
+Run DrugsPipeline.py
 
 ### Description
 
@@ -59,6 +48,8 @@ folder.
 ├── operators
 │   ├── ingestions_and_normalizations.py
 │   └── transformations.py
+├── test
+│   ├── DrugsPipelineTest.py
 └── utils
     └── Configs.py
 ```
@@ -67,7 +58,8 @@ folder.
 
 ```
 1 ) resources/ : Folder that contains the raw data and the desired result. 
-2 ) DrugsPipeline.py : Class that launchesthe data pipeline 
+2 ) DrugsPipeline.py : Class that launches the data pipeline
+3 ) Usage.py : Class that launches the adhoc on thedata pipeline  
 ```
 
 #### operators/
@@ -84,6 +76,12 @@ folder.
     2.3 ) Writes the output in JSON format in 'src/main/resources/results/results.json'
 ```
 
+#### test/
+
+```
+1 ) DrugsPipelineTest.py : Unit tests for the drug data pipeline
+```
+
 #### utils/
 
 ```
@@ -94,11 +92,13 @@ folder.
 
 ### How to run :
 
-```
-python3 src/main/Usage.py
-```
+Run Usage.py
 
 ### Description
+
+This project has been organised with in three parent folders : main, operators and utils. A job scheduler like Airflow
+would be able to run the code in the 'operators' folder with python operators that could be launched from the 'main'
+folder.
 
 ```
 ├── main
@@ -110,6 +110,8 @@ python3 src/main/Usage.py
 │   ├── ad_hoc_query.py
 │   ├── ingestions_and_normalizations.py
 │   └── transformations.py
+├── test
+│   ├── UsageTest.py
 └── utils
     └── Configs.py
 ```
@@ -131,15 +133,17 @@ python3 src/main/Usage.py
     1.4 ) Print the result
 ```
 
+#### test/
+
+```
+1 ) UsageTest.py : Unit tests for hte adhoc query
+```
+
 ## Axis for improvement
 
 ### Using predefined model with dataclasses
 
 In order to strongly type the data entities
-
-### Unitary testing
-
-In order to make the project easily evolve and avoid regressions
 
 ### Continuous integration and deployment
 

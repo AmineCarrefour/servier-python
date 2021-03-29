@@ -11,7 +11,7 @@ def get_drugs_list():
 
 
 def search_drugs(df):
-    text_likes = df.select_dtypes(include=[object, "string"])
+    text_likes = df.select_dtypes(include=["string"])
     drugs_list = get_drugs_list()
     result_list = []
     for s in drugs_list:
